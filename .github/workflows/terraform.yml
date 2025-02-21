@@ -33,14 +33,14 @@ jobs:
         run: terraform plan
         working-directory: ${{ env.TF_DIR }}
         env:
-          STATUSCAKE_API_TOKEN: ${{ secrets.STATUSCAKE_API_TOKEN }}
+          STATUSCAKE_API_TOKEN: ${{ secrets.STATUSCAKE_API_KEY }}
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve
         working-directory: ${{ env.TF_DIR }}
         env:
-          STATUSCAKE_API_TOKEN: ${{ secrets.STATUSCAKE_API_TOKEN }}
+          STATUSCAKE_API_TOKEN: ${{ secrets.STATUSCAKE_API_KEY }}
 
       - name: Commit and Push Terraform State
         if: github.ref == 'refs/heads/main'
