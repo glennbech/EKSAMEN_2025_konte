@@ -24,9 +24,12 @@ resource "statuscake_uptime_check" "website_monitor" {
   }
   tags = var.tags
 }
+resource "random_id" "contact_group_suffix" {
+  byte_length = 4
+}
 
 resource "statuscake_contact_group" "website_monitor" {
-  name  = "website_monitor-group"
+  name  = "website_monitor-group-${random_id.contact_group_suffix.hex}"
   email_addresses = ["fredrikravndalgaaso@gmail.com"]
 }
 
