@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+provider "statuscake" {
+  api_token = var.statuscake_api_token
+}
+
 resource "statuscake_contact_group" "contact_group" {
   name            = var.contact_group_name
   email_addresses = var.contact_group_emails

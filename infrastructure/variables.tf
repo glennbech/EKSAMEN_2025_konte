@@ -9,7 +9,11 @@ variable "contact_group_emails" {
   type        = list(string)
   default     = ["fredrikravndalgaaso@gmail.com"]
 }
-
+variable "statuscake_api_token" {
+  description = "API-token for StatusCake"
+  type        = string
+  sensitive   = true
+}
 variable "check_interval" {
   description = "Intervallet i sekunder mellom sjekker"
   type        = number
