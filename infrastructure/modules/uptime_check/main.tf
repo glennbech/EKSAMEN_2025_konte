@@ -7,7 +7,7 @@ terraform {
   }
 }
 resource "statuscake_uptime_check" "this" {
-  name           = var.name_uptime
+  name           = var.name
   check_interval = 300
   confirmation   = 3
   trigger_rate   = 10
@@ -19,7 +19,7 @@ resource "statuscake_uptime_check" "this" {
   }
 
   monitored_resource {
-    address = var.address_uptime
+    address = var.address
   }
-  tags = var.tags_uptime
+  tags = var.tags
 }

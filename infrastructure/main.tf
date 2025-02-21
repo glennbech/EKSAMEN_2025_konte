@@ -32,15 +32,13 @@ resource "statuscake_contact_group" "website_monitor" {
 
 
 module "site1" {
-  source         = "./modules/uptime_check"
-  name_uptime    = var.name
-  address_uptime = var.address
-  tags_uptime    = var.tags
+  source  = "./modules/uptime_check"
+  name    = "site1"
+  address = "https://www.vg.no"
 }
 
 module "site2" {
-  source         = "./modules/uptime_check"
-  name_uptime    = var.name
-  address_uptime = var.address
-  tags_uptime    = var.tags
+  source  = "./modules/uptime_check"
+  name    = "site2"
+  address = "https://xkcd.com"
 }

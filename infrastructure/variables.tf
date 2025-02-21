@@ -7,7 +7,7 @@ variable "confirmation" {
 }
 
 variable "name" {
-  default = "example-site"
+  default = "website_monitor-site"
 }
 
 variable "trigger_rate" {
