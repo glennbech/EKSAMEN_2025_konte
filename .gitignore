@@ -1,8 +1,3 @@
-# Default ignored files
-/../../../../3.år/Devops/EKSAMEN_2025_konte/.idea/shelf/
-/../../../../3.år/Devops/EKSAMEN_2025_konte/.idea/workspace.xml
-# Editor-based HTTP Client requests
-/../../../../3.år/Devops/EKSAMEN_2025_konte/.idea/httpRequests/
-# Datasource local storage ignored files
-/../../../../3.år/Devops/EKSAMEN_2025_konte/.idea/dataSources/
-/../../../../3.år/Devops/EKSAMEN_2025_konte/.idea/dataSources.local.xml
+/.idea
+/infrastructure/.terraform
+/infrastructure/.terraform.lock.hcl
