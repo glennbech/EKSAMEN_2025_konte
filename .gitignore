@@ -1,5 +1,6 @@
 /.idea
 /infrastructure/.terraform.lock.hcl
 /infrastructure/.terraform
+/infrastructure/terraform.tfstate.backup
 /modules/statuscake_monitor/.terraform
 /modules/statuscake_monitor/.terraform.lock.hcl
