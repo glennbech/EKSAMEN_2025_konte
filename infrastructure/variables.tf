@@ -1,37 +1,47 @@
+variable "contact_group_name" {
+  description = "Navn på kontaktgruppen"
+  type        = string
+  default     = "Standard Kontaktgruppe"
+}
+
+variable "contact_group_emails" {
+  description = "Liste over e-postadresser for varsling"
+  type        = list(string)
+  default     = ["fredrikravndalgaaso@gmail.com"]
+}
+
 variable "check_interval" {
-  default = 300
+  description = "Intervallet i sekunder mellom sjekker"
+  type        = number
+  default     = 300
 }
 
 variable "confirmation" {
-  default = 3
-}
-
-variable "name" {
-  default = "website_monitor-site"
+  description = "Antall bekreftelser før alarm"
+  type        = number
+  default     = 3
 }
 
 variable "trigger_rate" {
-  default = 10
+  description = "Alarm trigger rate"
+  type        = number
+  default     = 10
 }
 
 variable "timeout" {
-  default = 20
+  description = "Timeout for http-sjekken"
+  type        = number
+  default     = 20
 }
 
 variable "validate_ssl" {
-  default = true
+  description = "Valider SSL for http-sjekken"
+  type        = bool
+  default     = true
 }
 
 variable "status_codes" {
-  type    = list(string)
-  default = ["200"]
-}
-
-variable "address" {
-  default = "https://www.vg.no"
-}
-
-variable "tags" {
-  type    = list(string)
-  default = ["production"]
+  description = "Liste over gyldige HTTP-statuskoder"
+  type        = list(string)
+  default     = [200]
 }
