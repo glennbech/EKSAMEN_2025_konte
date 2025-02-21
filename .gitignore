@@ -3,4 +3,3 @@
 /infrastructure/.terraform.lock.hcl
 /infrastructure/*.tfstate
 /infrastructure/*.tfstate.*
-
