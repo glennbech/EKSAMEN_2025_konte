@@ -26,7 +26,7 @@ resource "statuscake_uptime_check" "website_monitor" {
 }
 
 resource "statuscake_contact_group" "website_monitor" {
-  name  = "example-group"
+  name  = "website_monitor-group"
   email_addresses = ["fredrikravndalgaaso@gmail.com"]
 }
 
