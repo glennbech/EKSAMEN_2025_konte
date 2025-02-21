@@ -25,7 +25,7 @@ resource "statuscake_uptime_check" "website_monitor" {
   tags = var.tags
 }
 resource "random_id" "contact_group_suffix" {
-  byte_length = 4
+  byte_length = 5
 }
 
 resource "statuscake_contact_group" "website_monitor" {
