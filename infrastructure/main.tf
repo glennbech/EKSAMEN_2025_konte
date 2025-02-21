@@ -1,47 +1,50 @@
 terraform {
   required_providers {
     statuscake = {
-      source = "StatusCakeDev/statuscake"
+      source  = "StatusCakeDev/statuscake"
       version = "2.2.2"
     }
   }
 }
 
-resource "statuscake_uptime_check" "website_monitor" {
+resource "statuscake_contact_group" "contact_group" {
+  name            = var.contact_group_name
+  email_addresses = var.contact_group_emails
+}
+
+module "monitor_vg" {
+  source         = "../modules/statuscake_monitor"
+  name           = "VG Monitor"
+  target_url     = "www.vg.no"
   check_interval = var.check_interval
   confirmation   = var.confirmation
-  name           = var.name
   trigger_rate   = var.trigger_rate
+  timeout        = var.timeout
+  validate_ssl   = var.validate_ssl
+  status_codes   = var.status_codes
+  tags           = ["production", "vg"]
+  contact_group_ids  = [statuscake_contact_group.contact_group.id]
 
-  http_check {
-    timeout          = var.timeout
-    validate_ssl     = var.validate_ssl
-    status_codes     = var.status_codes
-  }
-
-  monitored_resource {
-    address = var.address
-  }
-  tags = var.tags
-}
-resource "random_id" "contact_group_suffix" {
-  byte_length = 5
 }
 
-resource "statuscake_contact_group" "website_monitor" {
-  name  = "website_monitor-group-${random_id.contact_group_suffix.hex}"
-  email_addresses = ["fredrikravndalgaaso@gmail.com"]
+module "monitor_xkcd" {
+  source         = "../modules/statuscake_monitor"
+  name           = "xkcd Monitor"
+  target_url     = "www.xkcd.com"
+  check_interval = var.check_interval
+  confirmation   = var.confirmation
+  trigger_rate   = var.trigger_rate
+  timeout        = var.timeout
+  validate_ssl   = var.validate_ssl
+  status_codes   = var.status_codes
+  tags           = ["production", "xkcd"]
+  contact_group_ids  = [statuscake_contact_group.contact_group.id]
 }
 
-
-module "site1" {
-  source  = "./modules/uptime_check"
-  name    = "site1"
-  address = "https://www.vg.no"
+output "monitor_vg_id" {
+  value = module.monitor_vg.uptime_check_id
 }
 
-module "site2" {
-  source  = "./modules/uptime_check"
-  name    = "site2"
-  address = "https://xkcd.com"
+output "monitor_xkcd_id" {
+  value = module.monitor_xkcd.uptime_check_id
 }

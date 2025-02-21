@@ -1,13 +1,11 @@
-variable "contact_group_name" {
-  description = "Navn på kontaktgruppen"
+variable "name" {
+  description = "Navn på monitoren"
   type        = string
-  default     = "Standard Kontaktgruppe"
 }
 
-variable "contact_group_emails" {
-  description = "Liste over e-postadresser for varsling"
-  type        = list(string)
-  default     = ["fredrikravndalgaaso@gmail.com"]
+variable "target_url" {
+  description = "Nettsiden som skal overvåkes"
+  type        = string
 }
 
 variable "check_interval" {
@@ -43,5 +41,17 @@ variable "validate_ssl" {
 variable "status_codes" {
   description = "Liste over gyldige HTTP-statuskoder"
   type        = list(string)
-  default     = [200]
+  default     = ["200"]
+}
+
+variable "tags" {
+  description = "Liste over tags for monitoren"
+  type        = list(string)
+  default     = ["production"]
+}
+
+variable "contact_group_ids" {
+  description = "Liste over konktakt gruppe ider "
+  type        = list(string)
+  default     = []
 }
